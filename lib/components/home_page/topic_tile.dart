@@ -12,7 +12,7 @@ class TopicTile extends StatelessWidget {
     return InkWell(
       borderRadius: BorderRadius.circular(20),
       onTap: () {
-        loadSession(context: context, valuePassed: topic);
+        loadSession(context: context, topic: topic);
       },
       child: FadeInAnimation(
         child: Container(
@@ -27,8 +27,9 @@ class TopicTile extends StatelessWidget {
                   child: Padding(
                     padding: const EdgeInsets.all(12.0),
                     child: Hero(
-                        tag: topic,
-                        child: Image.asset('assets/images/$topic.png')),
+                      tag: topic,
+                      child: Image.asset("assets/images/$topic.png"),
+                    ),
                   ),
                 ),
                 Expanded(
