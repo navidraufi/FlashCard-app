@@ -19,7 +19,11 @@ class _FlashcardsPageState extends State<FlashcardsPage> {
   @override
   void initState() {
     WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
-      Provider.of<FlashcardsNotifier>(context, listen: false).runSlideCard1();
+      final myNotifier =
+          Provider.of<FlashcardsNotifier>(context, listen: false);
+      myNotifier.runSlideCard1();
+      myNotifier.generateAllSelectedWords();
+      myNotifier.generateCurrentWord();
     });
     // TODO: implement initState
     super.initState();

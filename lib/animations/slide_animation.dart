@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:message_app/configs/constants.dart';
 import 'package:message_app/enums/slide_direction.dart';
 
 class SlideAnimation extends StatefulWidget {
@@ -6,7 +7,9 @@ class SlideAnimation extends StatefulWidget {
       {super.key,
       required this.child,
       required this.direction,
-      this.animate = true, this.reset, this.animationCompleted});
+      this.animate = true,
+      this.reset,
+      this.animationCompleted});
 
   final Widget child;
   final SlideDirection direction;
@@ -26,12 +29,12 @@ class _SlideAnimationState extends State<SlideAnimation>
   void initState() {
     _animationController = AnimationController(
       vsync: this,
-      duration: Duration(milliseconds: 500),
+      duration: Duration(milliseconds: kAnimationSlideDuration),
     )..addListener(() {
-      if(_animationController.isCompleted){
-        widget.animationCompleted?.call();
-      }
-    });
+        if (_animationController.isCompleted) {
+          widget.animationCompleted?.call();
+        }
+      });
 
     if (widget.animate) {
       _animationController.forward();
@@ -44,7 +47,7 @@ class _SlideAnimationState extends State<SlideAnimation>
   void didUpdateWidget(covariant SlideAnimation oldWidget) {
     // TODO: implement didUpdateWidget
 
-    if (widget.reset==true){
+    if (widget.reset == true) {
       _animationController.reset();
     }
 

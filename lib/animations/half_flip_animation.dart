@@ -1,6 +1,7 @@
 import 'dart:math';
 
 import 'package:flutter/material.dart';
+import 'package:message_app/configs/constants.dart';
 
 class HalfFlipAnimation extends StatefulWidget {
   const HalfFlipAnimation(
@@ -27,13 +28,13 @@ class _HalfFlipAnimationState extends State<HalfFlipAnimation>
 
   @override
   void initState() {
-    _animationController =
-        AnimationController(duration: Duration(milliseconds: 1000), vsync: this)
-          ..addListener(() {
-            if (_animationController.isCompleted) {
-              widget.animationCompleted.call();
-            }
-          });
+    _animationController = AnimationController(
+        duration: Duration(milliseconds: kAnimationSlideDuration), vsync: this)
+      ..addListener(() {
+        if (_animationController.isCompleted) {
+          widget.animationCompleted.call();
+        }
+      });
 
     // TODO: implement initState
     super.initState();
@@ -63,7 +64,6 @@ class _HalfFlipAnimationState extends State<HalfFlipAnimation>
 
   @override
   Widget build(BuildContext context) {
-    
     double rotationAdjustment = 0;
     if (widget.flipFromHalfWay) {
       rotationAdjustment = pi / 2;

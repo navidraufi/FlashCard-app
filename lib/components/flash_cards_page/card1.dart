@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:message_app/animations/half_flip_animation.dart';
 import 'package:message_app/animations/slide_animation.dart';
+import 'package:message_app/configs/constants.dart';
 import 'package:message_app/enums/slide_direction.dart';
 import 'package:message_app/notifiers/flashcard_notifier.dart';
 import 'package:provider/provider.dart';
@@ -37,13 +38,11 @@ class Card1 extends StatelessWidget {
             direction: SlideDirection.upIn,
             child: Center(
               child: Container(
-                child: Text("Front OF the CARD"),
+                alignment: Alignment.center,
+                child: Text(notifier.word1.english),
                 height: size.height * 0.70,
                 width: size.width * 0.90,
-                decoration: BoxDecoration(
-                  color: Theme.of(context).primaryColor,
-                  borderRadius: BorderRadius.circular(20),
-                ),
+                decoration: cardDesign(context),
               ),
             ),
           ),
